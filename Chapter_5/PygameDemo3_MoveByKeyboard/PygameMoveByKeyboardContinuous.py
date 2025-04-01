@@ -5,6 +5,7 @@ import pygame
 from pygame.locals import *
 import sys
 import random
+import os
 
 # 2 - Define constants
 BLACK = (0, 0, 0)
@@ -26,8 +27,16 @@ window = pygame.display.set_mode([WINDOW_WIDTH, WINDOW_HEIGHT])
 clock = pygame.time.Clock()
  
 # 4 - Load assets: image(s), sound(s),  etc.
-ballImage = pygame.image.load('images/ball.png')
-targetImage = pygame.image.load('images/target.jpg')
+# ballImage = pygame.image.load('images/ball.png')
+# targetImage = pygame.image.load('images/target.jpg')
+
+base_path = os.path.dirname(os.path.abspath(__file__))
+
+ball_image_path = os.path.join(base_path, 'images', 'ball.png')
+ballImage = pygame.image.load(ball_image_path)
+
+target_image_path = os.path.join(base_path, 'images', 'target.jpg')
+targetImage = pygame.image.load(target_image_path)
 
 # 5 - Initialize variables
 ballX = random.randrange(MAX_WIDTH)

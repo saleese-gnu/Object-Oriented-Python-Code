@@ -29,11 +29,8 @@ oDimmer = DimmerSwitch()
 
 # Turn switch on, and raise the level 5 times
 oDimmer.turnOn()
-oDimmer.raiseLevel()
-oDimmer.raiseLevel()
-oDimmer.raiseLevel()
-oDimmer.raiseLevel()
-oDimmer.raiseLevel()
+for _ in range(5):
+    oDimmer.raiseLevel()
 oDimmer.show()
 
 # Lower the level 2 times, and turn off

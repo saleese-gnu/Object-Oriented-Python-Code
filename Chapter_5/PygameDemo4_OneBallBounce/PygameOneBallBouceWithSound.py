@@ -5,6 +5,9 @@ import pygame
 from pygame.locals import *
 import sys
 import random
+import os
+
+print(os.getcwd())
 
 # 2 - Define constants
 BLACK = (0, 0, 0)
@@ -19,9 +22,21 @@ window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 clock = pygame.time.Clock()
  
 # 4 - Load assets: image(s), sound(s),  etc.
-ballImage = pygame.image.load('images/ball.png')
-bounceSound = pygame.mixer.Sound('sounds/boing.wav')
-pygame.mixer.music.load('sounds/background.mp3')
+# ballImage = pygame.image.load('images/ball.png')
+# bounceSound = pygame.mixer.Sound('sounds/boing.wav')
+# pygame.mixer.music.load('sounds/background.mp3')
+
+base_path = os.path.dirname(os.path.abspath(__file__))
+image_path = os.path.join(base_path, 'images', 'ball.png')
+ballImage = pygame.image.load(image_path)
+
+boing_sounds_path = os.path.join(base_path, 'sounds', 'boing.wav')
+bounceSound = pygame.mixer.Sound(boing_sounds_path)
+
+background_sounds_path = os.path.join(base_path, 'sounds', 'background.mp3')
+pygame.mixer.music.load(background_sounds_path)
+
+
 pygame.mixer.music.play(-1, 0.0)
 
 

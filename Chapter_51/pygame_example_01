@@ -1,0 +1,33 @@
+import pygame
+import time
+
+pygame.init()
+size = [800, 600]
+screen = pygame.display.set_mode(size)
+font = pygame.font.Font(None, 36)
+text = font.render("Current Time:", True, (255, 255, 255)) 
+clock = pygame.time.Clock()
+running = True
+
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+     # 현재 시간 가져오기
+    current_time = time.localtime()
+    hours = current_time.tm_hour
+    minutes = current_time.tm_min
+
+    seconds = current_time.tm_sec
+
+    # 시간 문자열 생성
+    time_string = f"{hours:02d}:{minutes:02d}:{seconds:02d}"
+    text = font.render("Current Time:" + time_string, True, (255, 255, 255)) 
+
+    screen.fill("black")
+    screen.blit(text, [200,150])
+    pygame.display.flip()
+    clock.tick(60) 
+
+pygame.quit()
